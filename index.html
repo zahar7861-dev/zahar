@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Альфа Кубань</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      body {
+          margin: 0;
+          font-family: 'Segoe UI', Arial, sans-serif;
+          background: #b31b1b;
+          background-image: radial-gradient(circle at 20% 30%, #b31b1b 0%, #8a1515 90%);
+          min-height: 100vh;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          padding-top: 150px;
+          padding-bottom: 20px;
+          color: #ffffff;
+        }
+      .header{
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 2000;
+          width:100%;
+          min-height:130px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          text-align: center;
+          background: #f5f0eb;
+          background: linear-gradient(to right, #f5f0eb, #ffffff, #f5f0eb);
+          padding: 15px 20px;
+          gap: 20px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
+      .logo {
+          width: 100px;
+          height: auto;
+          flex-shrink: 0;
+          mix-blend-mode: multiply;
+      }
+      .header-center {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      .title{
+          font-size:36px;
+          color: #b31b1b;
+          font-weight:800;
+          line-height: 1.1;
+      }
+      .subtitle{
+        margin-top:7px;
+          font-size:18px;
+          color: #8a1515;
+          font-weight:200;
+      }
+      .subtitle1{
+          font-size:12px;
+          color: #6b1010;
+          font-size:200;
+          margin-top:13px;
+          letter-spacing:2px;
+      }
+      .boxcont {
+          display: flex;
+          gap: 14px;
+          margin: 20px 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+      .box {
+          background: rgba(180, 30, 20, 0.7);
+          backdrop-filter: blur(4px);
+          width: 160px;
+          height: 170px;
+          border-radius: 18px;
+          padding: 14px 10px;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          cursor: default;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+          position: relative;
+          overflow: hidden;
+        }
+      .box .smile{
+          font-size:32px;
+      }
+      .box h1{
+          margin-top:5px;
+          color: #ffffff;
+          font-size:22px;
+          font-weight: 700;
+      }
+      .box h2{
+          color: #f0e6e0;
+          font-size: 14px;
+          margin-top:8px;
+      }
+      .box .osu{
+          font-size: 15px;
+          color: #ffffff;
+          margin-top: 14px;
+          background: rgba(255, 255, 255, 0.15);
+          padding: 2px 12px;
+          border-radius: 30px;
+          position: relative;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .infobox {
+          background: rgba(180, 30, 20, 0.7);
+          backdrop-filter: blur(4px);
+          width: 94%;
+          max-width: 1000px;
+          margin: 24px auto;
+          padding: 22px 20px 28px;
+          border-radius: 28px;
+          border: 2px solid rgba(255, 255, 255, 0.35);
+          box-shadow: 0 4px 30px rgba(255, 255, 255, 0.12);
+      }
+      .infobox h2 {
+          color: #ffffff;
+          font-size: 22px;
+          margin: 0 0 12px 0;
+          letter-spacing: 1px;
+          padding-left: 4px;
+      }
+
+      .infobox ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #f5ede8;
+      }
+
+      .infobox ul li {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .infobox ul li:last-child {
+            border-bottom: none;
+      }
+
+      .infobox .tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f5f0eb, #ffffff);
+            color: #b31b1b;
+            border-radius: 30px;
+            padding: 6px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 16px;
+            border: none;
+            box-shadow: 0 2px 20px rgba(255, 255, 255, 0.25);
+      }
+
+      .couchbox{
+          background: rgba(180, 30, 20, 0.7);
+          backdrop-filter: blur(4px);
+          width: 94%;
+          max-width: 1000px;
+          margin: 24px auto;
+          padding: 22px 20px 28px;
+          border-radius: 28px;
+          border: 2px solid rgba(255, 255, 255, 0.35);
+          box-shadow: 0 4px 30px rgba(255, 255, 255, 0.12);
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          align-items: flex-start;
+      }
+      .couchbox .couch-content {
+          flex: 1;
+          min-width: 250px;
+      }
+      .couchbox .couch-image {
+          flex: 0 0 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .couchbox .couch-image img {
+          width: 100%;
+          max-width: 200px;
+          height: auto;
+          border-radius: 18px;
+          border: 3px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+      }
+      .couchbox h1{
+          font-size:25px;
+          color:#ffffff;
+          font-weight:700;
+      }
+      .couchbox h2{
+          color:#f0e6e0;
+          font-size:15px;
+          margin-top:7px;
+          padding-bottom: 14px;
+          font-weight:600;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      }
+      .couchbox h3{
+          color:#f5ede8;
+          font-size:17px;
+          border-bottom: 3px solid transparent;
+          border-image: linear-gradient(to right, #f43f5e, #fb923c) 1;
+          padding-bottom: 5px;
+          margin-top:10px;
+          font-weight:300;
+      }
+      .couchbox {
+           flex-direction: column;
+           align-items: center;
+      }
+      .couchbox .couch-image {
+           flex: 0 0 auto;
+           width: 100%;
+           max-width: 250px;
+      }
+      .adressbox{
+          line-height:35px;
+          background: rgba(180, 30, 20, 0.7);
+          backdrop-filter: blur(4px);
+          width: 94%;
+          height:auto;
+          max-width: 1000px;
+          margin: 24px auto;
+          padding: 22px 20px 28px;
+          border-radius: 28px;
+          border: 2px solid rgba(255, 255, 255, 0.35);
+          box-shadow: 0 4px 30px rgba(255, 255, 255, 0.12);
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+      }
+      .adressbox h1{
+          color: #f0e6e0;
+          font-size: 28px;
+          font-weight: 300;
+          text-align: center;
+          letter-spacing: 1px;
+          margin-bottom: 5px;
+      }
+      .adressbox .phone{
+          color: #f0e6e0;
+          font-size: 18px;
+          font-weight: 300;
+          margin-top: 5px;
+          background: rgba(255, 255, 255, 0.08);
+          padding: 6px 20px;
+          border-radius: 30px;
+          text-decoration: none;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          transition: all 0.3s ease;
+          display: inline-block;
+          letter-spacing: 0.5px;
+      }
+      .adressbox .phone:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+      }
+      .adressbox .adress {
+          line-height:1px;
+          font-size:15px;
+          color:#D3D3D3;
+      }
+      .adressbox .time {
+          font-size:17px;
+          color:#C0C0C0;
+      }
+      .osu{
+          font-size: 20px;
+          color: #ffffff;
+          font-weight:700;
+          margin-top: 30px;
+          position: relative;
+      }
+      footer {
+          text-align:center;
+          font-size: 12px;
+      }
+      .foot {
+          height: 10px;
+      }
+
+      @media (max-width: 768px) {
+          body {
+              padding-top: 140px;
+          }
+          .header {
+              flex-direction: column;
+              gap: 10px;
+              padding: 12px 10px;
+              min-height: 120px;
+          }
+          .logo {
+              width: 70px;
+          }
+          .title {
+              font-size: 28px;
+          }
+          .subtitle {
+              font-size: 16px;
+          }
+          .subtitle1 {
+              font-size: 11px;
+          }
+
+          .box {
+              width: 140px;
+              height: 155px;
+              padding: 12px 8px;
+          }
+          .box h1 {
+              font-size: 19px;
+          }
+          .box h2 {
+              font-size: 13px;
+          }
+          .box .smile {
+              font-size: 28px;
+          }
+
+          .couchbox {
+              padding: 18px 15px 22px;
+              gap: 20px;
+          }
+          .couchbox .couch-content {
+              min-width: 100%;
+          }
+          .couchbox .couch-image {
+              flex: 0 0 auto;
+              max-width: 200px;
+              width: 100%;
+          }
+          .couchbox h1 {
+              font-size: 22px;
+          }
+          .couchbox h2 {
+              font-size: 14px;
+          }
+          .couchbox h3 {
+              font-size: 15px;
+          }
+
+          .adressbox {
+              padding: 18px 15px 22px;
+              line-height: 30px;
+          }
+          .adressbox h1 {
+              font-size: 22px;
+          }
+          .adressbox .phone {
+              font-size: 16px;
+              padding: 5px 16px;
+          }
+          .adressbox .adress {
+              font-size: 14px;
+          }
+          .adressbox .time {
+              font-size: 15px;
+          }
+          .adressbox .osu {
+              font-size: 18px;
+              margin-top: 20px;
+          }
+
+          .infobox {
+              padding: 18px 15px 22px;
+          }
+          .infobox h2 {
+              font-size: 20px;
+          }
+          .infobox ul {
+              font-size: 15px;
+          }
+          .infobox .tag {
+              font-size: 12px;
+              padding: 5px 18px;
+          }
+
+          footer {
+              font-size: 11px;
+          }
+      }
+
+      @media (max-width: 480px) {
+          body {
+              padding-top: 120px;
+          }
+          .header {
+              padding: 10px 8px;
+              gap: 6px;
+              min-height: 100px;
+          }
+          .logo {
+              width: 50px;
+          }
+          .title {
+              font-size: 20px;
+          }
+          .subtitle {
+              font-size: 13px;
+              margin-top: 3px;
+          }
+          .subtitle1 {
+              font-size: 9px;
+              margin-top: 6px;
+              letter-spacing: 1px;
+          }
+
+          .boxcont {
+              gap: 10px;
+              margin: 12px 8px;
+          }
+          .box {
+              width: 120px;
+              height: 140px;
+              padding: 10px 6px;
+              border-radius: 14px;
+          }
+          .box h1 {
+              font-size: 17px;
+              margin-top: 3px;
+          }
+          .box h2 {
+              font-size: 12px;
+              margin-top: 5px;
+          }
+          .box .smile {
+              font-size: 24px;
+          }
+          .box .osu {
+              font-size: 13px;
+              margin-top: 10px;
+              padding: 2px 10px;
+          }
+
+          .couchbox {
+              padding: 15px 12px 18px;
+              gap: 15px;
+              border-radius: 20px;
+          }
+          .couchbox .couch-image {
+              max-width: 160px;
+          }
+          .couchbox h1 {
+              font-size: 20px;
+          }
+          .couchbox h2 {
+              font-size: 13px;
+              padding-bottom: 10px;
+          }
+          .couchbox h3 {
+              font-size: 13px;
+              margin-top: 8px;
+              padding-bottom: 3px;
+          }
+
+          .adressbox {
+              padding: 15px 12px 18px;
+              line-height: 25px;
+              border-radius: 20px;
+          }
+          .adressbox h1 {
+              font-size: 19px;
+              letter-spacing: 0.5px;
+          }
+          .adressbox .phone {
+              font-size: 14px;
+              padding: 4px 14px;
+              margin-top: 3px;
+          }
+          .adressbox .adress {
+              font-size: 12px;
+          }
+          .adressbox .time {
+              font-size: 13px;
+          }
+          .adressbox .osu {
+              font-size: 16px;
+              margin-top: 15px;
+          }
+
+          .infobox {
+              padding: 15px 12px 18px;
+              border-radius: 20px;
+          }
+          .infobox h2 {
+              font-size: 18px;
+          }
+          .infobox ul {
+              font-size: 13px;
+              line-height: 1.5;
+          }
+          .infobox ul li {
+              padding: 3px 0;
+          }
+          .infobox .tag {
+              font-size: 11px;
+              padding: 4px 14px;
+              margin-top: 12px;
+          }
+
+          footer {
+              font-size: 10px;
+          }
+          .foot {
+              height: 5px;
+          }
+      }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <img src="image-0.png" class="logo">
+
+    <div class="header-center">
+      <p class="title">🥋 Альфа Кубань</p>
+      <p class="subtitle">Клуб каратэ киокушин</p>
+      <p class="subtitle1">Путь воина · Сила духа · Честь</p>
+    </div>
+
+    <img src="image-0.png"  class="logo" style="transform: scaleX(-1);">
+  </div>
+
+  <div class="boxcont">
+    <div class="box">
+      <p class="smile">⚔️</p>
+      <h1>Дисциплина</h1>
+      <h2>Воля и характер</h2>
+      <p class="osu">OSU!</p>
+    </div>
+    <div class="box">
+      <p class="smile">🔥</p>
+      <h1>Стойкость</h1>
+      <h2>Не сдаваться</h2>
+      <p class="osu">OSU!</p>
+    </div>
+    <div class="box">
+      <p class="smile">🤝</p>
+      <h1>Братство</h1>
+      <h2>Мы - одна команда</h2>
+      <p class="osu">OSU!</p>
+    </div>
+    <div class="box">
+      <P class="smile">👊</P>
+      <h1>Уважение</h1>
+      <h2>К себе и другим</h2>
+      <p  class="osu">OSU!</p>
+    </div>
+    <div class="box">
+      <P class="smile">⛩️</P>
+      <h1>Традиции</h1>
+      <h2>Киокушинкай</h2>
+      <p class="osu">OSU!</p>
+    </div>
+  </div>
+
+  <div class="infobox">
+    <h2>⚡ О клубе</h2>
+        <ul>
+            <li>⚡ Киокушинкай - традиционный стиль каратэ</li>
+            <li>⚡ Воспитывать силу духа и тела</li>
+            <li>⚡ Тренировки для детей и взрослых</li>
+            <li>⚡ Соревнования, пояса, соревнования</li>
+            <li>⚡ Атмосфера взаимоуважнения</li>
+            <li>⚡ Путь война начинается здесь</li>
+        </ul>
+        <div class="tag">🥋 Приходи и становись сильнее</div>
+  </div>
+
+  <div class="couchbox">
+    <div class="couch-content">
+      <h1>🥋 Наставник</h1>
+      <h2>Плеханов Сергей Петрович - лучший тренер</h2>
+      <h3>🏆 Серебряный призер абсолютного Чемпионата мира 2003 г.,</h3>
+      <h3>🥇 Чемпион мира по «ТАМЕШИВАРИ» 2003 г.</h3>
+      <h3>👊 Призер международного турнира "Кубок Оямы" - 1999 год - 1 место</h3>
+      <h3>💪 Мастер спорта международного класса</h3>
+      <h3>🔥 Мастер боевых искусств, сенсей четвертый дан</h3>
+      <h3>🪖 Участник СВО первого отряда РСБИ «СОЮЗ», кавалер медали за «Отвагу».</h3>
+      <h3>🛡️ Воспитывает силу духа в каждом ученике</h3>
+    </div>
+    <div class="couch-image">
+      <img src="plehanov.jpg">
+    </div>
+  </div>
+  <div class="adressbox">
+      <h1>
+          📞 Звони, записывайся!<br>
+          <a class="phone" href="tel:+79999999">+7 (999) 999 99 99</a><br>
+          <span class="adress">📍 г. Краснодар, ул. Брянская, 6</span><br>
+          <span class="time">пн/ср/пт 19:00-21:30</span><br>
+          <span class="osu">OSU!</span>
+      </h1>
+  </div>
+  <div class="foot"></div>
+  <footer>
+    © 2026 Альфа Кубань - клуб каратэ киокушин
+  </footer>
+  <div class="foot"></div>
+</body>
+</html>
